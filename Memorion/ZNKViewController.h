@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZNKViewController : UIViewController
+@interface ZNKViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *levelControl;
+@property (strong, nonatomic) IBOutlet UIButton *mainButton;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
+- (IBAction)levelChanged:(id)sender;
 
 @end
