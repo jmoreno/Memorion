@@ -15,7 +15,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="nYe-DT-KUM">
                                 <rect key="frame" x="0.0" y="236" width="768" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IQU-Xg-Xjq">
                                     <size key="itemSize" width="152" height="168"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,14 +30,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="aYy-Ab-gg2" userLabel="secretImage">
+                                                    <rect key="frame" x="5" y="5" width="140" height="140"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="sYW-JE-39g" userLabel="coverImage">
                                                     <rect key="frame" x="5" y="5" width="140" height="140"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="aYy-Ab-gg2" userLabel="secretImage">
-                                                    <rect key="frame" x="5" y="5" width="140" height="140"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -58,9 +59,9 @@
                                 <rect key="frame" x="20" y="20" width="728" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Baby"/>
-                                    <segment title="Human"/>
-                                    <segment title="Superhuman"/>
+                                    <segment title="Grillo"/>
+                                    <segment title="Humano"/>
+                                    <segment title="Superheroe"/>
                                     <segment title="Robot"/>
                                 </segments>
                                 <connections>
@@ -78,9 +79,12 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="restartGame:" destination="2" eventType="touchUpInside" id="gzm-y1-gw3"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="nYe-DT-KUM" id="Zew-uU-V7X"/>
@@ -119,6 +123,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZNKViewController.h"/>
             <relationships>
                 <relationship kind="action" name="levelChanged:"/>
+                <relationship kind="action" name="restartGame:"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="levelControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mainButton" candidateClass="UIButton"/>

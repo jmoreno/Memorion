@@ -109,6 +109,7 @@
 		594EC2821739A6E800E5B5D8 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 594EC2301739A6E800E5B5D8 /* 9.png */; };
 		594EC2851739AC1000E5B5D8 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 594EC2831739AC1000E5B5D8 /* Button.png */; };
 		594EC2861739AC1000E5B5D8 /* Button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 594EC2841739AC1000E5B5D8 /* Button@2x.png */; };
+		594EC2891739C3DD00E5B5D8 /* ZNKMemoryGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 594EC2881739C3DD00E5B5D8 /* ZNKMemoryGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,8 @@
 		594EC2301739A6E800E5B5D8 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		594EC2831739AC1000E5B5D8 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		594EC2841739AC1000E5B5D8 /* Button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button@2x.png"; sourceTree = "<group>"; };
+		594EC2871739C3DD00E5B5D8 /* ZNKMemoryGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZNKMemoryGame.h; path = Memorion/ZNKMemoryGame.h; sourceTree = SOURCE_ROOT; };
+		594EC2881739C3DD00E5B5D8 /* ZNKMemoryGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZNKMemoryGame.m; path = Memorion/ZNKMemoryGame.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +303,8 @@
 				594EC1B917386C7F00E5B5D8 /* ZNKViewController.m */,
 				594EC1DA1738837B00E5B5D8 /* ZNKMemoryCell.h */,
 				594EC1DB1738837B00E5B5D8 /* ZNKMemoryCell.m */,
+				594EC2871739C3DD00E5B5D8 /* ZNKMemoryGame.h */,
+				594EC2881739C3DD00E5B5D8 /* ZNKMemoryGame.m */,
 				594EC1A417386C7F00E5B5D8 /* Supporting Files */,
 			);
 			path = Memorion;
@@ -636,6 +641,7 @@
 				594EC1AE17386C7F00E5B5D8 /* ZNKAppDelegate.m in Sources */,
 				594EC1BA17386C7F00E5B5D8 /* ZNKViewController.m in Sources */,
 				594EC1DC1738837B00E5B5D8 /* ZNKMemoryCell.m in Sources */,
+				594EC2891739C3DD00E5B5D8 /* ZNKMemoryGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +716,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -735,7 +741,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -749,6 +755,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Memorion/Memorion-Prefix.pch";
 				INFOPLIST_FILE = "Memorion/Memorion-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -760,6 +767,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Memorion/Memorion-Prefix.pch";
 				INFOPLIST_FILE = "Memorion/Memorion-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -818,6 +826,7 @@
 				594EC1D417386C7F00E5B5D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		594EC1D517386C7F00E5B5D8 /* Build configuration list for PBXNativeTarget "MemorionTests" */ = {
 			isa = XCConfigurationList;
@@ -826,6 +835,7 @@
 				594EC1D717386C7F00E5B5D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

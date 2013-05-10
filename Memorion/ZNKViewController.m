@@ -8,8 +8,11 @@
 
 #import "ZNKViewController.h"
 #import "ZNKMemoryCell.h"
+#import "ZNKMemoryGame.h"
 
 @interface ZNKViewController ()
+
+@property (nonatomic, strong) ZNKMemoryGame *memoryGame;
 
 @end
 
@@ -19,6 +22,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _memoryGame = [ZNKMemoryGame sharedInstance];
+    _levelControl.selectedSegmentIndex = _memoryGame.level;
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,6 +34,14 @@
 
 - (IBAction)levelChanged:(id)sender {
     
+    [_memoryGame newGameWithLevel:_levelControl.selectedSegmentIndex];
+    [_collectionView reloadData];
+    
+}
+
+- (IBAction)restartGame:(id)sender {
+
+    [_memoryGame newGameWithLevel:_levelControl.selectedSegmentIndex];
     [_collectionView reloadData];
     
 }
@@ -37,7 +50,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return pow((_levelControl.selectedSegmentIndex + 1) * 2, 2);
+    return [_memoryGame.arrayOfItems count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -53,7 +66,19 @@
     
     // make the cell's title the actual NSIndexPath value
     cell.coverImageView.image = [UIImage imageNamed:@"105.png"];
+    cell.secretImageView.image = [_memoryGame.arrayOfItems objectAtIndex:indexPath.row];
+    cell.secretImageView.alpha = 0.0;
+    cell.coverImageView.alpha = 1.0;
     
+    if ([[_memoryGame.arrayOfDiscovered objectAtIndex:indexPath.row] isEqualToString:@"NO"]) {
+        cell.backgroundColor = [UIColor colorWithRed:102.0/255.0 green:102.0/255.0 blue:255.0/255.0 alpha:1];
+    } else {
+        cell.backgroundColor = [UIColor redColor];
+        cell.secretImageView.alpha = 1.0;
+        cell.coverImageView.alpha = 0.0;
+    }
+
+
     return cell;
     
 }
@@ -64,7 +89,7 @@
     
     int screenWidth = _collectionView.bounds.size.width;
     
-    NSInteger width = screenWidth / ((_levelControl.selectedSegmentIndex + 1) * 2);
+    NSInteger width = screenWidth / sqrt([_memoryGame.arrayOfItems count]);
     
     CGSize cellSize = CGSizeMake(width, width);
     
@@ -86,7 +111,64 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([_memoryGame cellAtIndexPathCanBeSelected:indexPath]) {
+        if ([_memoryGame.arrayOfSelected count] == 2) {
+            for (NSIndexPath *indexPathSelected in _memoryGame.arrayOfSelected) {
+                [self hideTheShowedObjectAtIndexPath:indexPathSelected];
+            }
+            [_memoryGame.arrayOfSelected removeAllObjects];
+        } else if ([_memoryGame.arrayOfSelected count] == 1) {
+            if (![indexPath isEqual:[_memoryGame.arrayOfSelected objectAtIndex:0]]) {
+                [self showTheHidenObjectAtIndexPath:indexPath];
+                [_memoryGame.arrayOfSelected addObject:indexPath];
+            }
+        } else {
+            [self showTheHidenObjectAtIndexPath:indexPath];
+            [_memoryGame.arrayOfSelected addObject:indexPath];
+        }
+    }
+}
 
+#pragma mark - Animated selections
+
+-(void)showTheHidenObjectAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZNKMemoryCell *cell = (ZNKMemoryCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    cell.secretImageView.alpha = 0.0;
+    cell.coverImageView.alpha = 1.0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        cell.secretImageView.alpha = 1.0;
+        cell.coverImageView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [_memoryGame checkSelectionWithCompletion:^(BOOL matched, NSArray *selectedCells) {
+            if (matched) {
+                for (NSIndexPath *cell in selectedCells) {
+                    [self changeTheColorOfTheCellAtIndexPath:cell];
+                }
+            }
+        }];
+    }];
+}
+
+-(void)hideTheShowedObjectAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZNKMemoryCell *cell = (ZNKMemoryCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    cell.secretImageView.alpha = 1.0;
+    cell.coverImageView.alpha = 0.0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        cell.secretImageView.alpha = 0.0;
+        cell.coverImageView.alpha = 1.0;
+    }];
+}
+
+-(void)changeTheColorOfTheCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZNKMemoryCell *cell = (ZNKMemoryCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    [UIView animateWithDuration:0.25 animations:^{
+        cell.backgroundColor = [UIColor redColor];
+    }];    
 }
 
 

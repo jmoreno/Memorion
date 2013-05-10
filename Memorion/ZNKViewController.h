@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 - (IBAction)levelChanged:(id)sender;
+- (IBAction)restartGame:(id)sender;
 
 @end
