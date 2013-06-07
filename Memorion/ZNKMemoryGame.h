@@ -10,21 +10,20 @@
 
 @interface ZNKMemoryGame : NSObject
 
-
-
 @property (strong, nonatomic) NSMutableArray *arrayOfItems;
 @property (strong, nonatomic) NSMutableArray *arrayOfSelected;
 @property (strong, nonatomic) NSMutableArray *arrayOfDiscovered;
 @property (strong, nonatomic) NSString *scoreString;
 @property int totalDiscovered;
 @property int level;
+@property BOOL finishedGame;
 
 
 + (id)sharedInstance;
 - (void)newGameWithLevel:(int)level;
 - (BOOL)cellAtIndexPathCanBeSelected:(NSIndexPath *)indexPath;
 - (BOOL)twoCellsSelected;
-- (void)checkSelectionWithCompletion:(void (^)(BOOL matched, NSArray *selectedCells))completion;
+- (void)checkSelectionWithCompletion:(void (^)(BOOL matched, NSArray *selectedCells, BOOL finishedGame))completion;
 
 
 @end

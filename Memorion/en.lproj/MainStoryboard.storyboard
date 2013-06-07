@@ -83,11 +83,16 @@
                                     <action selector="restartGame:" destination="2" eventType="touchUpInside" id="gzm-y1-gw3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" image="704.png" id="gFS-EQ-eoL">
+                                <rect key="frame" x="515" y="71" width="240" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="nYe-DT-KUM" id="Zew-uU-V7X"/>
+                        <outlet property="finishedGameImage" destination="gFS-EQ-eoL" id="bkE-lD-2B9"/>
                         <outlet property="levelControl" destination="i8j-hD-zd0" id="xpy-rW-bnZ"/>
                         <outlet property="mainButton" destination="WV5-as-MBz" id="btA-TE-NB6"/>
                     </connections>
@@ -97,6 +102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="704.png" width="160" height="160"/>
         <image name="Button.png" width="244" height="158"/>
     </resources>
     <classes>
@@ -125,6 +131,7 @@
                 <relationship kind="action" name="levelChanged:"/>
                 <relationship kind="action" name="restartGame:"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="finishedGameImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="levelControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mainButton" candidateClass="UIButton"/>
             </relationships>

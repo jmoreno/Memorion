@@ -64,6 +64,8 @@
     
     _totalDiscovered = 0;
     
+    _finishedGame = NO;
+    
     [self reloadScoreLabel];
 }
 
@@ -94,21 +96,25 @@
     return NO;
 }
 
-- (void)checkSelectionWithCompletion:(void (^)(BOOL, NSArray *))completion
+- (void)checkSelectionWithCompletion:(void (^)(BOOL, NSArray *, BOOL))completion
 {
     if ([_arrayOfSelected count] == 2) {
         NSIndexPath *firstSelection = [_arrayOfSelected objectAtIndex:0];
         NSIndexPath *secondSelection = [_arrayOfSelected objectAtIndex:1];
         if ([[_arrayOfItems objectAtIndex:firstSelection.row] isEqual:[_arrayOfItems objectAtIndex:secondSelection.row]]) {
-            completion(YES, _arrayOfSelected);
+            _totalDiscovered += 2;
+            if (_totalDiscovered == [_arrayOfItems count]) {
+                _finishedGame = YES;
+            }
+            NSArray *selectedCells = [[NSArray alloc] initWithArray:_arrayOfSelected];
             [_arrayOfSelected removeAllObjects];
             [_arrayOfDiscovered replaceObjectAtIndex:firstSelection.row withObject:@"YES"];
             [_arrayOfDiscovered replaceObjectAtIndex:secondSelection.row withObject:@"YES"];
-            _totalDiscovered += 2;
             [self reloadScoreLabel];
+            completion(YES, selectedCells, _finishedGame);
         }
     }
-    completion(NO, nil);
+    completion(NO, nil, _finishedGame);
 }
 
 - (void)reloadScoreLabel

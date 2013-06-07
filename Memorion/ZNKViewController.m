@@ -34,13 +34,13 @@
 
 - (IBAction)levelChanged:(id)sender {
     
-    [_memoryGame newGameWithLevel:_levelControl.selectedSegmentIndex];
-    [_collectionView reloadData];
+    [self restartGame:nil];
     
 }
 
 - (IBAction)restartGame:(id)sender {
 
+    _finishedGameImage.alpha = 0;
     [_memoryGame newGameWithLevel:_levelControl.selectedSegmentIndex];
     [_collectionView reloadData];
     
@@ -141,11 +141,16 @@
         cell.secretImageView.alpha = 1.0;
         cell.coverImageView.alpha = 0.0;
     } completion:^(BOOL finished) {
-        [_memoryGame checkSelectionWithCompletion:^(BOOL matched, NSArray *selectedCells) {
+        [_memoryGame checkSelectionWithCompletion:^(BOOL matched, NSArray *selectedCells, BOOL finishedGame) {
             if (matched) {
                 for (NSIndexPath *cell in selectedCells) {
                     [self changeTheColorOfTheCellAtIndexPath:cell];
                 }
+            }
+            if (finishedGame) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    _finishedGameImage.alpha = 1;
+                }];
             }
         }];
     }];

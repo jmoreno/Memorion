@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *levelControl;
 @property (strong, nonatomic) IBOutlet UIButton *mainButton;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIImageView *finishedGameImage;
 
 - (IBAction)levelChanged:(id)sender;
 - (IBAction)restartGame:(id)sender;

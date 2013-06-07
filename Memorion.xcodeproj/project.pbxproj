@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590BF39517628EE500C30F4B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 590BF39417628EE500C30F4B /* README.md */; };
 		594EC19E17386C7F00E5B5D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594EC19D17386C7F00E5B5D8 /* UIKit.framework */; };
 		594EC1A017386C7F00E5B5D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594EC19F17386C7F00E5B5D8 /* Foundation.framework */; };
 		594EC1A217386C7F00E5B5D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594EC1A117386C7F00E5B5D8 /* CoreGraphics.framework */; };
@@ -123,6 +124,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		590BF39417628EE500C30F4B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		594EC19A17386C7F00E5B5D8 /* Memorion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		594EC19D17386C7F00E5B5D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		594EC19F17386C7F00E5B5D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -263,6 +265,7 @@
 		594EC19117386C7F00E5B5D8 = {
 			isa = PBXGroup;
 			children = (
+				590BF39417628EE500C30F4B /* README.md */,
 				594EC1D817386DFD00E5B5D8 /* .gitignore */,
 				594EC1A317386C7F00E5B5D8 /* Memorion */,
 				594EC1C717386C7F00E5B5D8 /* MemorionTests */,
@@ -603,6 +606,7 @@
 				594EC2821739A6E800E5B5D8 /* 9.png in Resources */,
 				594EC2851739AC1000E5B5D8 /* Button.png in Resources */,
 				594EC2861739AC1000E5B5D8 /* Button@2x.png in Resources */,
+				590BF39517628EE500C30F4B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
