@@ -148,9 +148,12 @@
                 }
             }
             if (finishedGame) {
-                [UIView animateWithDuration:0.25 animations:^{
-                    _finishedGameImage.alpha = 1;
-                }];
+                [UIView animateWithDuration:0.25
+                                 animations:^{
+                                     _finishedGameImage.alpha = 1;
+                                 } completion:^(BOOL finished) {
+                                     // aquí es donde tendrás que poner la fanfarria.
+                                 }];
             }
         }];
     }];
